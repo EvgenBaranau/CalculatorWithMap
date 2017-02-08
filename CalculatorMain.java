@@ -1,0 +1,39 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by evgen on 08.02.2017.
+ */
+public class CalculatorMain {
+
+    public static void main(String[] args)
+    {
+        Operations operations = new Operations();
+        List<String> list = new ArrayList<>();
+        try (BufferedReader rd = new BufferedReader(new FileReader("example.txt"))) // поток ввода
+        {
+            while (rd.ready()) {
+                list.add(rd.readLine().trim().toLowerCase()); // добавляем в коллекцию выражение
+            }
+
+            System.out.println("Input data: ");
+            System.out.println("Calculator: "+list.get(0));
+            System.out.print("Task: ");
+            for(int i = 1;i<list.size();i++)
+            {
+                System.out.print(list.get(i));
+            }
+
+            System.out.println();
+
+            System.out.println(operations.Simpleoperations.values()); // вычисляем
+
+
+ // выводим результат
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
